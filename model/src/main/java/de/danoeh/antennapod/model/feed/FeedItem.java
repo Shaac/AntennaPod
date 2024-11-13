@@ -1,5 +1,7 @@
 package de.danoeh.antennapod.model.feed;
 
+import android.util.Log; // for debug logs; remove before merging
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -104,6 +106,8 @@ public class FeedItem implements Serializable {
         this.autoDownloadEnabled = autoDownloadEnabled;
         this.podcastIndexChapterUrl = podcastIndexChapterUrl;
         if (transcriptUrl != null) {
+            // debug log; remove before merging
+            Log.i("Transcript", "override type " + transcriptType + ", URL " + transcriptUrl);
             this.podcastIndexTranscriptUrl = transcriptUrl;
             this.podcastIndexTranscriptType = transcriptType;
         }
@@ -431,6 +435,8 @@ public class FeedItem implements Serializable {
     }
 
     public void setTranscriptUrl(String type, String url) {
+        // debug log; remove before merging
+        Log.i("Transcript", "Set transcript URL, type: " + type + ", URL: " + url);
         updateTranscriptPreferredFormat(type, url);
     }
 
